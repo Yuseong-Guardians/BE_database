@@ -7,8 +7,15 @@ export class HonorService {
   constructor(private readonly prisma: PrismaService) {}
 
   // 전체 조회
-  async findAll(): Promise<honor[]> {
-    return this.prisma.honor.findMany();
+  async findAll(): Promise<HonorResponseDto[]> {
+    const honors = await this.prisma.honor.findMany();
+    return honors.map((honor) => ({
+      ...honor,
+      resident_number: Number(honor.resident_number),
+      account_number: Number(honor.account_number),
+    }));
+
+    // return this.prisma.honor.findMany();
   }
 
   // 단건 조회
