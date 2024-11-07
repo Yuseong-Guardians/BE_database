@@ -8,7 +8,13 @@ export class HonorService {
 
   // 전체 조회
   async findAll(): Promise<honor[]> {
-    return this.prisma.honor.findMany();
+    const honorData = this.prisma.honor.findMany();
+
+    if (!honorData) {
+      throw new NotFoundException('Honor not found');
+    }
+
+    return honorData;
   }
 
   // 단건 조회
@@ -16,15 +22,23 @@ export class HonorService {
     const honorData = await this.prisma.honor.findUnique({
       where: { honor_number: honorNumber },
     });
+
     if (!honorData) {
       throw new NotFoundException('Honor not found');
     }
+
     return honorData;
   }
 
   // 등록
   async createHonor(data: honor): Promise<honor> {
-    return this.prisma.honor.create({ data });
+    const honorData = this.prisma.honor.create({ data });
+
+    if (!honorData) {
+      throw new NotFoundException('Honor not found');
+    }
+
+    return honorData;
   }
 
   // 수정
@@ -33,9 +47,11 @@ export class HonorService {
       where: { honor_number: honorNumber },
       data,
     });
+
     if (!updatedHonor) {
       throw new NotFoundException('Honor not found');
     }
+
     return updatedHonor;
   }
 
