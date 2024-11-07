@@ -41,8 +41,12 @@ export class HonorService {
 
   // 삭제
   async deleteHonor(honorNumber: number): Promise<void> {
-    await this.prisma.honor.delete({
+    const deletedHonor = await this.prisma.honor.delete({
       where: { honor_number: honorNumber },
     });
+
+    if (!deletedHonor) {
+      throw new NotFoundException('Honor not found');
+    }
   }
 }
