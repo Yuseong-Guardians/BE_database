@@ -10,7 +10,7 @@ import {
 import { HonorService } from './honor.service';
 import { honor } from '@prisma/client';
 
-@Controller('honor')
+@Controller('yuseong/app/honor')
 export class HonorController {
   constructor(private readonly honorService: HonorService) {}
 
