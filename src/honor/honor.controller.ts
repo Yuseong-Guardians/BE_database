@@ -27,7 +27,7 @@ export class HonorController {
   }
 
   // 등록
-  @Post('registeration')
+  @Post('registration')
   async createHonor(@Body() honorData: honor): Promise<honor> {
     return this.honorService.createHonor(honorData);
   }
