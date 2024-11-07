@@ -16,7 +16,7 @@ export class HonorController {
 
   // 전체 조회
   @Get()
-  async getAllHonors(): Promise<HonorResponseDto[]> {
+  async getAllHonors(): Promise<honor[]> {
     return this.honorService.findAll();
   }
 
