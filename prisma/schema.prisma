@@ -11,13 +11,13 @@ model honor {
   name            String  @db.VarChar(10)
   dong_name       String  @db.VarChar(10)
   honor_number    Int     @id
-  resident_number BigInt
+  resident_number String  @db.VarChar(20)
   address         String  @db.VarChar(30)
   detail_address  String  @db.VarChar(30)
   deposit_type    String  @db.VarChar(15)
   bank_list       String  @db.VarChar(30)
   depositor_name  String  @db.VarChar(10)
-  account_number  BigInt
+  account_number  String  @db.VarChar(30)
   new_reason      String  @db.VarChar(30)
   transfer_date   String  @db.VarChar(30)
   notes           String?
