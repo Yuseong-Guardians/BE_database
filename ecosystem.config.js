@@ -6,7 +6,6 @@ module.exports = {
       args: 'start',
       cwd: './',
       interpreter: 'node',
-      watch: true,
     },
   ],
 };
